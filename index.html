@@ -1,53 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Glass Video Player</title>
-
-  <link rel="stylesheet" href="./player.css" />
-
-  <style>
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: white;
-      font-family: system-ui, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .controls {
-      margin-bottom: 20px;
-      display: flex;
-      gap: 12px;
-    }
-
-    input {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 10px 14px;
-      border-radius: 10px;
-      color: white;
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-    }
-
-    media-player {
-      width: 80%;
-      max-width: 1000px;
-      aspect-ratio: 16/9;
-      border-radius: 16px;
-      overflow: hidden;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    }
-  </style>
-
-</head>
+<script type="module" crossorigin src="/assets/index-BBbMG8Hw.js"></script>
 
 <body>
 
@@ -60,40 +11,5 @@
   <media-provider></media-provider>
 </media-player>
 
-<script type="module" src="./player.js"></script>
-
-<script>
-  const player = document.getElementById('player');
-  const videoInput = document.getElementById('videoInput');
-  const subInput = document.getElementById('subInput');
-
-  let currentTrack;
-
-  videoInput.addEventListener('change', () => {
-    const file = videoInput.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      player.src = url;
-    }
-  });
-
-  subInput.addEventListener('change', () => {
-    const file = subInput.files[0];
-    if (file) {
-      if (currentTrack) currentTrack.remove();
-
-      const track = document.createElement('track');
-      track.kind = 'subtitles';
-      track.label = 'English';
-      track.srclang = 'en';
-      track.src = URL.createObjectURL(file);
-      track.default = true;
-
-      player.appendChild(track);
-      currentTrack = track;
-    }
-  });
-</script>
 
 </body>
-</html>
